@@ -33,7 +33,7 @@ export const addNoteApi = async (data: addNote_Interface): Promise<PostApiRespon
 }
 
 export const singupApi = async (data: InputFieldPayload): Promise<PostApiResponse> => {
-    const response = await axios.post(`http://localhost:8080/api/v1/auth/register`, data)
+    const response = await instence.post(`/auth/register`, data)
     if (response.status === 201) {
         return response;
     } else {
