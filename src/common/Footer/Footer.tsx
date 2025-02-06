@@ -55,8 +55,8 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2">
-              <li><a href="mailto:support@company.com" className="hover:text-gray-400">support@company.com</a></li>
-              <li><a href="tel:+1234567890" className="hover:text-gray-400">+1 (234) 567-890</a></li>
+              <li><a href="mailto:support@company.com" className="hover:text-gray-400">sattuahirwar.corporate@gmail.com</a></li>
+              <li><a href="tel:+1234567890" className="hover:text-gray-400">+9810411724</a></li>
               <li><p className="hover:text-gray-400">123 Business St., City, Country</p></li>
             </ul>
           </div>
