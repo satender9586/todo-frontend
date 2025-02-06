@@ -1,5 +1,4 @@
 
-import axios from "axios";
 import instence from "../config/Axios";
 import { InputFieldPayload, OTPInputFieldPayload, ResendInputFieldPayload, LoginFieldPayload } from "../constant/TypeNotes";
 const COMMON_NOTE_PATH = '/note';
