@@ -5,7 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "https://toda-backend-mign.onrender.com/api/v1/",
     "paths": {
       "@/*": ["./src/*"]
     }
