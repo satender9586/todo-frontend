@@ -14,7 +14,8 @@ export const PUBLIC_ROUTES: Public_Routes_Interface = Object.freeze({
    LOGIN: "/login",
    SIGNUP: "/register",
    FORGET: "/forget-password",
-   OTP: "/otp-verify"
+   OTP: (email: string) => `/otp-verify?singup/email=${(email)}`
+   
 });
 
 export const DEFAULT_ROUTE: { HOME: string } = Object.freeze({

@@ -33,7 +33,7 @@ export const ProtectedRoutes = ({ children }: Props) => {
         if(isProtectedRoute && isAuthenticated && token){
            const path: string = currentPath || "/dashboard";
            navigate(path);
-        }else if(isPublicRoute ||  isDefaultRoute  && ((!isAuthenticated && !token))){
+        }else if((isPublicRoute ||  isDefaultRoute ) && ((!isAuthenticated && !token))){
             navigate(currentPath)
         }else{
             navigate("/")

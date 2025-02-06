@@ -23,6 +23,7 @@ const Otp = () => {
   };
 
   const OtpSubmitHandler = async (data: OTPInputFieldPayload) => {
+    console.log("otp",data)
     try {
       const response = await OtpVerifyApi(data);
       if (response?.status == 200) {
@@ -35,7 +36,7 @@ const Otp = () => {
   };
 
   const ResendOTPSubmitHandler = async ()=>{
-    const data:ResendInputFieldPayload = {email:formData.email}
+    const data:ResendInputFieldPayload = {email:formData.email || pathEmail}
     try {
       const response = await ResendOtpApi(data)
       if (response?.status == 200) {
@@ -65,6 +66,7 @@ const Otp = () => {
 
   useEffect(() => {
     setFormData({ email: pathEmail, otp: "" });
+    console.log("pathEmail",pathEmail)
   }, [pathEmail]);
 
   return (
