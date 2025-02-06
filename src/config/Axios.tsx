@@ -4,7 +4,8 @@ import { getToken } from "../utils/Helper";
 
 
 let instence = axios.create({});
-const basePublicUrl = import.meta.env.VITE_DEVELOMENT_URL || "https://toda-backend-mign.onrender.com/api/v1/"
+// const basePublicUrl = import.meta.env.VITE_DEVELOMENT_URL || "https://toda-backend-mign.onrender.com/api/v1/"
+const basePublicUrl =  "https://toda-backend-mign.onrender.com/api/v1/"
 instence.defaults.baseURL = basePublicUrl;
 instence.defaults.timeout = 6000;
 
