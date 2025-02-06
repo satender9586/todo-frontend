@@ -6,7 +6,7 @@ import { getToken } from "../utils/Helper";
 let instence = axios.create({});
 const basePublicUrl = import.meta.env.VITE_DEVELOMENT_URL
 instence.defaults.baseURL = basePublicUrl;
-instence.defaults.timeout = 1000;
+instence.defaults.timeout = 6000;
 
 
 instence.interceptors.request.use(
