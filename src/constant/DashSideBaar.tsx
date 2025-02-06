@@ -40,7 +40,7 @@ export const sideBaarData: sideBaarData_interface[] = [
     {
         id: 2,
         icons: <CiUser className="h-4 w-4 text-gray-700 hover:text-white transition-all duration-300 ease-in-out"/>,
-        tabName: "Profile",
+        tabName: "Profiles",
         tabPath: "/dashboard/profile"
     }
 ];
