@@ -21,8 +21,8 @@ function App() {
       <Route path="/login"  element={<Login/>}/>
       <Route path="/register"  element={<Register/>}/>
       <Route path="/otp-verify"  element={<Otp/>}/>
-      {/* <Route path="/forget-password"  element={<ForgetPassword/>}/> */}
-      {/* <Route path="/update-password"  element={<UpdatePassword/>}/> */}
+      <Route path="/forget-password"  element={<ForgetPassword/>}/>
+      <Route path="/update-password"  element={<UpdatePassword/>}/>
       <Route path="/dashboard"  element={<Dashboard/>}/>
       <Route path="/dashboard/isachive"  element={<IsAchive/>}/>
       <Route path="/dashboard/trash"  element={<Trash/>}/>
