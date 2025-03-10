@@ -99,8 +99,8 @@ export interface InputField_Interface {
   // -------------------------------------------------------------Login User-------------------------------------
 
  export interface LoginFieldPayload {
-    email:string,
-    password:string
+    email?:string,
+    password?:string
 }
 
 export interface LoginInputFieldData_Interface {
@@ -170,4 +170,17 @@ export interface UserInfoInterface {
   createdAt: string; 
   updatedAt: string; 
   __v: number; 
+}
+
+
+// -------------------------------------- Forget Password -------------------------------------- 
+
+// ---------------------------------------------------Update password-------------------------------------
+
+
+
+export interface UpdatePasswordFieldPayload {
+  email?:string,
+  otp:string,
+  newPassword:string,
 }

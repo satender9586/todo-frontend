@@ -1,9 +1,38 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import updatePassImg from "../../../assets/Auth/update-password.jpg";
 import Layout from "../../../common/Layout/Layout";
+import { UpdatePasswordApi } from "../../../services/Post";
+import { useState } from "react";
+import { UpdatePasswordFieldPayload } from "../../../constant/TypeNotes";
+
+
+
 
 const UpdatePassword = () => {
+  const navigate = useNavigate();
+  const url = useLocation();
+  const pathEmail = url.search.split("=")[1];
+  const [formData, setFormData] = useState<UpdatePasswordFieldPayload>({email: pathEmail,otp: "",newPassword:""});
 
+  const updatePasswordHandler=(e: React.ChangeEvent<HTMLInputElement>)=>{
+    const {name, value}=e.target;
+    setFormData({...formData,[name]:value})
+  }
 
+  const submitPasswordHandler = async () => {
+    try {
+      const objData: UpdatePasswordFieldPayload = { ...formData };
+      const response = await UpdatePasswordApi(objData);
+      if (response.status===200) {
+        navigate("/login")
+      } else {
+        console.log('Password update failed');
+      }
+    } catch (error) {
+      console.error('Error updating password:', error);
+    }
+  };
+  
 
 
   return (
@@ -28,7 +57,9 @@ const UpdatePassword = () => {
               Please enter your new password and the OTP sent to your email below.
             </p>
 
-            <form className="space-y-4">
+            <form  onSubmit={(e) => {
+              e.preventDefault(), submitPasswordHandler();
+            }} className="space-y-4">
               {/* OTP Input */}
               <div>
                 <label
@@ -40,7 +71,9 @@ const UpdatePassword = () => {
                 <input
                   type="text"
                   id="otp"
-
+                  name="otp"
+                  value={formData.otp}
+                  onChange={updatePasswordHandler}
                   className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Enter the OTP sent to your email"
                   required
@@ -56,31 +89,18 @@ const UpdatePassword = () => {
                   New Password
                 </label>
                 <input
+                  name="newPassword"
+                  value={formData.newPassword}
+                  onChange={updatePasswordHandler}
                   type="password"
-                  id="password"
+                  id="newPassword"
                   className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Enter your new password"
                   required
                 />
               </div>
 
-              {/* Confirm Password Input */}
-              <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-gray-700 font-medium"
-                >
-                  Confirm New Password
-                </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Confirm your new password"
-                  required
-                />
-              </div>
-
+            
               <button
                 type="submit"
                 className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"

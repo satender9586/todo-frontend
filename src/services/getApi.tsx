@@ -47,3 +47,23 @@ export const userDetailsApi = async (id: string): Promise<Note_Response> => {
     throw new Error("Something went wrong with the get notes bin API!")
   }
 };
+
+
+export const recoverBinNote = async (id: string): Promise<Note_Response> => {
+  const response = await instence.get(`${COMMON_NOTE_PATH}/note-recover/${id}`);
+  if(response.status==200){
+    return response;
+  }else{
+    throw new Error("Something went wrong with the get recover API!")
+  }
+};
+
+
+export const recoverAllBinNote = async (id: string): Promise<Note_Response> => {
+  const response = await instence.get(`${COMMON_NOTE_PATH}/allnote-recover/${id}`);
+  if(response.status==200){
+    return response;
+  }else{
+    throw new Error("Something went wrong with the get recover API!")
+  }
+};

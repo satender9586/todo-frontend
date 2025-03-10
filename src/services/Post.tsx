@@ -1,6 +1,6 @@
 
 import instence from "../config/Axios";
-import { InputFieldPayload, OTPInputFieldPayload, ResendInputFieldPayload, LoginFieldPayload } from "../constant/TypeNotes";
+import { InputFieldPayload, OTPInputFieldPayload, ResendInputFieldPayload, LoginFieldPayload,UpdatePasswordFieldPayload } from "../constant/TypeNotes";
 const COMMON_NOTE_PATH = '/note';
 const Auth_PATH = '/auth';
 
@@ -16,6 +16,7 @@ interface PostApiResponse {
     status: number;
     statusText: string;
 }
+
 
 
 
@@ -60,6 +61,22 @@ export const ResendOtpApi = async (data: ResendInputFieldPayload): Promise<PostA
 
 export const UserLoginApi = async (data: LoginFieldPayload): Promise<PostApiResponse> => {
     const response = await instence.post(`${Auth_PATH}/login`, data)
+    if (response?.status == 200) {
+        return response
+    } else {
+        throw new Error("Some thing is wrong")
+    }
+}
+export const forgetPasswordApi = async (data: LoginFieldPayload): Promise<PostApiResponse> => {
+    const response = await instence.post(`${Auth_PATH}/forgetpassword`, data)
+    if (response?.status == 200) {
+        return response
+    } else {
+        throw new Error("Some thing is wrong")
+    }
+}
+export const UpdatePasswordApi = async (data: UpdatePasswordFieldPayload): Promise<PostApiResponse> => {
+    const response = await instence.post(`${Auth_PATH}/updatepassord`, data)
     if (response?.status == 200) {
         return response
     } else {

@@ -11,7 +11,7 @@ const Otp = () => {
   const navigate = useNavigate();
   const url = useLocation();
   const pathEmail = url.search.split("=")[1];
-  const [otpTime, setOtpTime] = useState<number>(10)
+  const [otpTime, setOtpTime] = useState<number>(60)
   const [formData, setFormData] = useState<OTPInputFieldPayload>({email: "",otp: ""});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

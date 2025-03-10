@@ -1,7 +1,45 @@
 
 import forgetImg from "../../../assets/Auth/forget.jpg";
+import { useNavigate } from "react-router-dom";
+import { forgetPasswordApi } from "../../../services/Post";
+import { useRef } from "react";
+import { AxiosError } from "axios";
+
+
+
 
 const ForgetPassword = () => {
+
+  const navigate = useNavigate()
+  const emailRef = useRef<HTMLInputElement>(null)
+
+
+
+  async function forgetPasswordHandler() {
+
+    if (emailRef.current?.value) {
+      const email: string = emailRef.current?.value
+      try {
+        const response = await forgetPasswordApi({ email })
+        if(response.status===200){
+          navigate(`/update-password?update/email=${email}`)
+        }
+      } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+          console.error("Error adding note:", error);
+          throw new Error(
+            error.response?.data?.message || "An unknown error occurred"
+          );
+        } else {
+          console.error("Unexpected error:", error);
+          throw new Error("An unexpected error occurred");
+        }
+      }
+
+    }
+
+  }
+
 
 
 
@@ -16,7 +54,10 @@ const ForgetPassword = () => {
           <p className="text-center text-gray-600">
             No worries! Just enter your email address below and we'll send you instructions to reset your password.
           </p>
-          <form className="space-y-4">
+          <form   onSubmit={(e) => {
+              e.preventDefault();
+              forgetPasswordHandler();
+            }} className="space-y-4">
             <div>
               <label
                 htmlFor="email"
@@ -25,11 +66,12 @@ const ForgetPassword = () => {
                 Email Address
               </label>
               <input
+                ref={emailRef}
                 type="email"
                 id="email"
                 className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter your email"
-              
+
                 required
               />
             </div>
@@ -43,9 +85,9 @@ const ForgetPassword = () => {
           </form>
 
           <p className="text-center text-gray-600">
-            <a href="/login" className="text-blue-600 hover:underline">
+            <button onClick={()=>navigate("/login")}><a  className="text-blue-600 hover:underline">
               Remembered your password? Go back to Login
-            </a>
+            </a></button>
           </p>
         </div>
       </div>
