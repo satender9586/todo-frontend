@@ -7,7 +7,7 @@ let instence = axios.create({});
 // const basePublicUrl = import.meta.env.VITE_DEVELOMENT_URL 
 const basePublicUrl =  "https://toda-backend-mign.onrender.com/api/v1/"
 instence.defaults.baseURL = basePublicUrl;
-instence.defaults.timeout = 6000;
+instence.defaults.timeout = 10000;
 
 
 instence.interceptors.request.use(
